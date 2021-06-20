@@ -1,5 +1,6 @@
 package com.ololee.quake;
 
+import com.ololee.quake.item.hammer.item.Hammer;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
