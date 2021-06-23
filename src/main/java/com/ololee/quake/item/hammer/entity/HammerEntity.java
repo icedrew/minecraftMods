@@ -27,7 +27,10 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 import javax.annotation.Nullable;
 
+import static com.ololee.quake.constants.Constants.HAMMER;
+
 public class HammerEntity extends AbstractArrowEntity {
+
     private static final DataParameter<Byte> ID_LOYALTY = EntityDataManager.defineId(HammerEntity.class, DataSerializers.BYTE);
     private static final DataParameter<Boolean> ID_FOIL = EntityDataManager.defineId(HammerEntity.class, DataSerializers.BOOLEAN);
     private ItemStack tridentItem = new ItemStack(Items.TRIDENT);
@@ -38,16 +41,16 @@ public class HammerEntity extends AbstractArrowEntity {
         super(hammerEntityEntityType, world);
     }
 
-    public HammerEntity(World p_i48790_1_, LivingEntity p_i48790_2_, ItemStack p_i48790_3_) {
-        super(EntityType.TRIDENT, p_i48790_2_, p_i48790_1_);
-        this.tridentItem = p_i48790_3_.copy();
-        this.entityData.set(ID_LOYALTY, (byte) EnchantmentHelper.getLoyalty(p_i48790_3_));
-        this.entityData.set(ID_FOIL, p_i48790_3_.hasFoil());
+    public HammerEntity(World world, LivingEntity livingEntity, ItemStack itemStack) {
+        super(HAMMER, livingEntity, world);
+        this.tridentItem = itemStack.copy();
+        this.entityData.set(ID_LOYALTY, (byte) EnchantmentHelper.getLoyalty(itemStack));
+        this.entityData.set(ID_FOIL, itemStack.hasFoil());
     }
 
     @OnlyIn(Dist.CLIENT)
-    public HammerEntity(World p_i48791_1_, double p_i48791_2_, double p_i48791_4_, double p_i48791_6_) {
-        super(EntityType.TRIDENT, p_i48791_2_, p_i48791_4_, p_i48791_6_, p_i48791_1_);
+    public HammerEntity(World world, double p_i48791_2_, double p_i48791_4_, double p_i48791_6_) {
+        super(HAMMER, p_i48791_2_, p_i48791_4_, p_i48791_6_, world);
     }
     
 
